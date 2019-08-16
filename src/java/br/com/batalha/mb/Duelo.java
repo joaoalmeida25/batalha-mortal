@@ -100,14 +100,18 @@ public class Duelo implements Serializable {
             } else if (p1.getInteligencia() < p2.getInteligencia()) {
                 p1.setInteligencia(p1.getInteligencia() - 2);
                 p2.setInteligencia(p2.getInteligencia() + 2);
-                substituirHeroi(p1);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p2.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p1);
+                p1 = randomNovoHeroi();
+                listaDuelo.add(p1);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p2.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             } else {
                 p1.setInteligencia(p1.getInteligencia() + 2);
                 p2.setInteligencia(p2.getInteligencia() - 2);
-                substituirHeroi(p2);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p2);
+                p2 = randomNovoHeroi();
+                listaDuelo.add(p2);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p1.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         } else if (atributo.equals("forca")) {
@@ -118,14 +122,18 @@ public class Duelo implements Serializable {
             } else if (p1.getForca() < p2.getForca()) {
                 p1.setForca(p1.getForca() - 2);
                 p2.setForca(p2.getForca() + 2);
-                substituirHeroi(p1);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p2.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p1);
+                p1 = randomNovoHeroi();
+                listaDuelo.add(p1);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p2.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             } else {
                 p1.setForca(p1.getForca() + 2);
                 p2.setForca(p2.getForca() - 2);
-                substituirHeroi(p2);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p2);
+                p2 = randomNovoHeroi();
+                listaDuelo.add(p2);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p1.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         } else if (atributo.equals("destreza")) {
@@ -136,14 +144,18 @@ public class Duelo implements Serializable {
             } else if (p1.getDestreza() < p2.getDestreza()) {
                 p1.setDestreza(p1.getDestreza() - 2);
                 p2.setDestreza(p2.getDestreza() + 2);
-                substituirHeroi(p1);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p2.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p1);
+                p1 = randomNovoHeroi();
+                listaDuelo.add(p1);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p2.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             } else {
                 p1.setDestreza(p1.getDestreza() + 2);
                 p2.setDestreza(p2.getDestreza() - 2);
-                substituirHeroi(p2);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p2);
+                p2 = randomNovoHeroi();
+                listaDuelo.add(p2);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p1.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         } else if (atributo.equals("defesa")) {
@@ -154,14 +166,18 @@ public class Duelo implements Serializable {
             } else if (p1.getDefesa() < p2.getDefesa()) {
                 p1.setDefesa(p1.getDefesa() - 2);
                 p2.setDefesa(p2.getDefesa() + 2);
-                substituirHeroi(p1);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p2.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p1);
+                p1 = randomNovoHeroi();
+                listaDuelo.add(p1);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p2.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             } else {
                 p1.setDefesa(p1.getDefesa() + 2);
                 p2.setDefesa(p2.getDefesa() - 2);
-                substituirHeroi(p2);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p2);
+                p2 = randomNovoHeroi();
+                listaDuelo.add(p2);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p1.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         } else if (atributo.equals("poder")) {
@@ -172,14 +188,18 @@ public class Duelo implements Serializable {
             } else if (p1.getPoder() < p2.getPoder()) {
                 p1.setPoder(p1.getPoder() - 2);
                 p2.setPoder(p2.getPoder() + 2);
-                substituirHeroi(p1);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p2.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p1);
+                p1 = randomNovoHeroi();
+                listaDuelo.add(p1);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p2.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             } else {
                 p1.setPoder(p1.getPoder() + 2);
                 p2.setPoder(p2.getPoder() - 2);
-                substituirHeroi(p2);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p2);
+                p2 = randomNovoHeroi();
+                listaDuelo.add(p2);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p1.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         } else {
@@ -190,40 +210,50 @@ public class Duelo implements Serializable {
             } else if (p1.getCombate() < p2.getCombate()) {
                 p1.setCombate(p1.getCombate() - 2);
                 p2.setCombate(p2.getCombate() + 2);
-                substituirHeroi(p1);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p2.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p1);
+                p1 = randomNovoHeroi();
+                listaDuelo.add(p1);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p2.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             } else {
                 p1.setCombate(p1.getCombate() + 2);
                 p2.setCombate(p2.getCombate() - 2);
-                substituirHeroi(p2);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, p1.getNome() + " ganhou o duelo!", "");
+                listaDuelo.remove(p2);
+                p2 = randomNovoHeroi();
+                listaDuelo.add(p2);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,  p1.getNome() + " vs " + p2.getNome(), "O vencedor é " + p1.getNome());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         }
     }
 
-    public void substituirHeroi(HeroiDto heroiCaido) {
-        listaDuelo.remove(heroiCaido);
+    public HeroiDto randomNovoHeroi() {
         Random r = new Random();
         HeroisController hc = new HeroisController();
+        HeroiDto novoHeroi = new HeroiDto();
         try {
             int i = r.nextInt(hc.carregarHerois().size());
-            HeroiDto novoHeroi = hc.carregarHerois().get(i);
-            if(p1 == null && p2 != null){
-                p1 = novoHeroi;
-                listaDuelo.add(p1);
-            }else {
-                p2 = novoHeroi;
-                listaDuelo.add(p2);
+            novoHeroi = hc.carregarHerois().get(i);
+
+            while (novoHeroi.getAlinhamento().equals(p1.getAlinhamento()) || novoHeroi.getAlinhamento().equals(p2.getAlinhamento())) {
+                i = r.nextInt(hc.carregarHerois().size());
+                novoHeroi = hc.carregarHerois().get(i);
             }
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "O herói " + novoHeroi.getNome() + " entrou no duelo!", "");
+
+            while (novoHeroi.getNome().equals(p1.getNome()) || novoHeroi.getNome().equals(p2.getNome())) {
+                i = r.nextInt(hc.carregarHerois().size());
+                novoHeroi = hc.carregarHerois().get(i);
+            }
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "O herói " + novoHeroi.getNome() + " entrou no duelo!", "");;;;
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (HeroisException e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao iniciar um novo duelo.", "");
             FacesContext.getCurrentInstance().addMessage(null, msg);
+            
         }
+        return novoHeroi;
     }
+    
 
     public List<HeroiDto> getListaDuelo() {
         return listaDuelo;

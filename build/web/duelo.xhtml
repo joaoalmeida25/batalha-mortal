@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link rel="icon" href="resources/images/img07.png" type="image/ico" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -15,14 +16,6 @@
         <link rel="stylesheet" href="resources/map/assets/css/style.css"/>
     </h:head>
     <h:body>
-        <!--            <div class="preloader d-flex align-items-center justify-content-center">
-                        <div class="lds-ellipsis">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>-->    
         <header class="header-area">
             <!-- Top Header Area -->
             <div class="top-header-area">
@@ -83,59 +76,87 @@
         <div class="container">
             <div class="row mt-15">
                 <div class="ml-15">
-                    <a href="#"><img src="resources/images/img03.png" alt=""/></a>  
+                    <a href="#"><img style="padding-top: 10px; width: 35px; height: auto" src="resources/images/espada.png" alt=""/></a>  
                 </div>
                 <div class="ml-15 mt-15">
-                    <h6>Duelo</h6>
+                    <h5>Duelo</h5>
                 </div>    
             </div>
         </div>
-
-        <div class="container mt-15">
-            <div class="col-12">
+        <h:form prependId="false">
+            <div class="container mt-15 ">
                 <div class="row">
-                    <h:form prependId="false">
-                        <h:commandButton styleClass="btn btn-sm" value="Randomizar Lutadores"  action="#{duelo.randomHerois()}"/><p/>
+                    <div class="col-12 ">
+                        <div class="row justify-content-center">
+                            <h:commandButton styleClass="btn btn-sm" value="Randomizar Lutadores"  action="#{duelo.randomHerois()}"/>
+                        </div><p/>
+                        <div class="row">
+                            <p:growl id="msg" showDetail="true"/>
+                            <h:panelGroup layout="block" id="vidChat">
+<!--                                <h:panelGrid rendered="#{empty duelo.listaDuelo}">
+                                    <span>Clique no botão para randomizar heróis</span>
+                                </h:panelGrid>-->
+                                <h:panelGrid rendered="#{not empty duelo.listaDuelo}">
+                                    <div class="container-fluid">
+                                        <p:dataTable var="lh" value="#{duelo.listaDuelo}">
+                                            <p:column headerText="Nome">
+                                                <h:outputText value="#{lh.nome}" />
+                                            </p:column>
+                                            <p:column headerText="Alinhamento">
+                                                <h:outputText value="#{lh.alinhamento}" />
+                                            </p:column>
+                                            <p:column headerText="Inteligencia">
+                                                <h:outputText value="#{lh.inteligencia}" />
+                                            </p:column>
+                                            <p:column headerText="Poder">
+                                                <h:outputText value="#{lh.poder}" />
+                                            </p:column>
+                                            <p:column headerText="Força">
+                                                <h:outputText value="#{lh.forca}" />
+                                            </p:column>
+                                            <p:column headerText="Destreza">
+                                                <h:outputText value="#{lh.destreza}" />
+                                            </p:column>
+                                            <p:column headerText="Combate">
+                                                <h:outputText value="#{lh.combate}" />
+                                            </p:column>
+                                            <p:column headerText="Defesa">
+                                                <h:outputText value="#{lh.defesa}" />
+                                            </p:column>
+                                        </p:dataTable>
+                                        <p:carousel value="#{duelo.listaDuelo}" headerText="Responsive" var="lh" itemStyle="text-align:center" >
+                                            <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value"  styleClass="ui-panelgrid-blank">
+                                                <f:facet name="header">
+                                                    <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+                                                </f:facet>
 
-                        <h:panelGrid rendered="#{not empty duelo.listaDuelo}">
-                            <h:commandButton styleClass="btn btn-sm" value="Iniciar Batalha"  action="#{duelo.batalhar()}"/><p/>
-                            <p:dataTable var="lh" value="#{duelo.listaDuelo}">
-                                <p:column headerText="Nome">
-                                    <h:outputText value="#{lh.nome}" />
-                                </p:column>
-                                <p:column headerText="Alinhamento">
-                                    <h:outputText value="#{lh.alinhamento}" />
-                                </p:column>
-                                <p:column headerText="Inteligencia">
-                                    <h:outputText value="#{lh.inteligencia}" />
-                                </p:column>
-                                <p:column headerText="Poder">
-                                    <h:outputText value="#{lh.poder}" />
-                                </p:column>
-                                <p:column headerText="Força">
-                                    <h:outputText value="#{lh.forca}" />
-                                </p:column>
-                                <p:column headerText="Destreza">
-                                    <h:outputText value="#{lh.destreza}" />
-                                </p:column>
-                                <p:column headerText="Combate">
-                                    <h:outputText value="#{lh.combate}" />
-                                </p:column>
-                                <p:column headerText="Defesa">
-                                    <h:outputText value="#{lh.defesa}" />
-                                </p:column>
-                            </p:dataTable>
-                            <span>Habilidade que será usada em batalha: <span style="font-weight: bold">#{duelo.atributo}</span></span>
-                            <p/>
-                            <h:commandButton styleClass="btn btn-sm" value="Limpar"  actionListener="#{duelo.removerLista()}"/>
-                        </h:panelGrid><p/>
-                        <div class="vidChat">
-                            <p:messages id="messages" />
+                                                <h:outputText value="Id:" />
+                                                <h:outputText value="#{lh.nome}" />
+
+                                                <h:outputText value="Year" />
+                                                <h:outputText value="#{lh.alinhamento}" />
+
+                                                <h:outputText value="Color:" />
+                                                <h:outputText value="#{lh.inteligencia}"/>
+
+                                                <h:outputText value="Price" />
+                                                <h:outputText value="$#{lh.poder}" />
+                                            </p:panelGrid>
+                                        </p:carousel>
+                                        <span>Habilidade que será usada em batalha: <span style="font-weight: bold">#{duelo.atributo}</span></span>
+                                        <p/>
+                                        <div class="row">
+                                            <h:commandButton styleClass="btn btn-sm" value="Limpar"  actionListener="#{duelo.removerLista()}"/>
+                                            <h:commandButton styleClass="btn btn-sm" value="Iniciar Batalha"  action="#{duelo.batalhar()}"/>
+                                        </div>
+                                    </div>
+                                </h:panelGrid>
+                            </h:panelGroup>
                         </div>
-                    </h:form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </h:form>
 
         <!-- ##### Javascript ##### -->
         <!-- jQuery-2.2.4 js -->
