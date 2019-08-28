@@ -7,6 +7,8 @@
 @import url(css/animate.css);
 @import url(css/font-awesome.min.css);
 /* :: 3.0 Base CSS */
+
+/*[class*=col-] {border: 1px solid red;}*/
 * {
     margin: 0;
     padding: 0; }
@@ -340,7 +342,7 @@ img {
 
 /* :: 3.6.0 ScrollUp */
 #scrollUp {
-    background-color: #003679;
+    background-color: #000000;
     border-radius: 5px 0 0 5px;
     bottom: 70px;
     color: #ffffff;
@@ -360,8 +362,8 @@ img {
     font-size: 18px;
     display: block; }
 #scrollUp:hover {
-    background-color: #FFF200;
-    color: #ffffff; }
+    background-color: #860000;
+    color: #000000; }
 
 /* :: 3.7.0 Credit Button */
 .credit-btn {
@@ -413,7 +415,7 @@ img {
     z-index: 1;
     width: 100%;
     height: 200px;
-    background: url(http://www.amominhacelula.com.br/wp-content/uploads/2019/05/marvel_superheroes-1200x530.jpg); }
+    background: url(https://thumbor.guiame.com.br/unsafe/840x500/smart/https://media.guiame.com.br/archives/2015/01/26/1468400504-super-herois.jpg); }
 .header-area .top-header-area .top-contact-info {
     position: relative;
     z-index: 1; }
@@ -1945,9 +1947,37 @@ img {
     background: #ffffff;
 }
 
+#visualizacao{
+    width: auto;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid #aeaeae;
+    border-right: 3px solid #aeaeae;
+    border-bottom: 3px solid #aeaeae;
+    border-radius:5px;
+}
+
+#vslz-vazia {
+    min-height: 18vh;
+    background: #ffffff;
+    padding: 8vh 0 0 42vw;
+    text-shadow: 2px 3px 3px #999;
+}
+
+.ui-widget-content {
+    border: 1px solid #ffffff;
+}
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
     background: #000000 -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));
     color: #ffffff;
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger .ui-icon {
+    margin-top: 5px;
+}
+
+.ui-icon-triangle-1-s {
+    background-position: -68px -16px;
 }
 
 /* ====== The End ====== */

@@ -1,7 +1,11 @@
 package br.com.batalha.model.dto;
 
-public class HeroiDto {
+import java.io.Serializable;
 
+public class HeroiDto implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private String nome;
     private String alinhamento;
     private Integer inteligencia;

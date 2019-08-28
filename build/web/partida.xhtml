@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link rel="icon" href="resources/images/img07.png" type="image/ico" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -15,14 +16,6 @@
         <link rel="stylesheet" href="resources/map/assets/css/style.css"/>
     </h:head>
     <h:body>
-<!--        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="lds-ellipsis">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>    -->
         <header class="header-area">
             <!-- Top Header Area -->
             <div class="top-header-area">
@@ -65,7 +58,7 @@
                                     <ul>
                                         <li><a href="#{request.contextPath}">Herois</a></li>
                                         <li><a href="duelo.xhtml">Duelo</a></li>
-                                        <li><a href="partida.xhtml">Partida</a></li>
+                                        <li><a href="#">Partida</a></li>
                                         <li><a href="novoHeroi.xhtml">Carregar Novo Herói</a></li>
                                     </ul>
                                 </div>
@@ -87,54 +80,75 @@
                     <a href="#"><img style="padding-top: 10px; width: 35px; height: auto" src="resources/images/espada.png" alt=""/></a>  
                 </div>
                 <div class="ml-15 mt-15">
-                    <h5>Herois</h5>
+                    <h5>Partida de 10 rounds</h5>
                 </div>    
             </div>
         </div>
-
-        <div class="features-area mt-15">
-            <div class="container">
+        
+        <h:form prependId="false">
+            <div class="container mt-15 ">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="single-features-area wow fadeInUp" data-wow-delay="100ms">
-                            <div style="align-items: center;">
-                                <p:messages id="messages" showDetail="true" closable="true"/>
-                                <p:dataTable var="lh" value="#{indexMB.listaHerois}">
-                                    <p:column headerText="Nome">
-                                        <h:outputText value="#{lh.nome}" />
-                                    </p:column>
-                                    <p:column headerText="Alinhamento">
-                                        <h:outputText value="#{lh.alinhamento}" />
-                                    </p:column>
-                                    <p:column headerText="Inteligencia">
-                                        <h:outputText value="#{lh.inteligencia}" />
-                                    </p:column>
-                                    <p:column headerText="Poder">
-                                        <h:outputText value="#{lh.poder}" />
-                                    </p:column>
-                                    <p:column headerText="Força">
-                                        <h:outputText value="#{lh.forca}" />
-                                    </p:column>
-                                    <p:column headerText="Destreza">
-                                        <h:outputText value="#{lh.destreza}" />
-                                    </p:column>
-                                    <p:column headerText="Combate">
-                                        <h:outputText value="#{lh.combate}" />
-                                    </p:column>
-                                    <p:column headerText="Defesa">
-                                        <h:outputText value="#{lh.defesa}" />
-                                    </p:column>
-                                </p:dataTable>
-                            </div>
+                    <div class="col-12 ">
+                        <div class="row justify-content-center">
+                            <h:commandButton styleClass="btn btn-sm" value="Randomizar Lutadores"  action="#{partidaMB.randomHerois()}"/>
+                        </div><p/>
+                        <div class="row">
+                            <h:panelGroup rendered="#{not empty partidaMB.listaDuelo}">
+                                <div class="container-fluid">
+                                    <p:dataTable var="lh" value="#{partidaMB.listaDuelo}">
+                                        <p:column headerText="Nome">
+                                            <h:outputText value="#{lh.nome}" />
+                                        </p:column>
+                                        <p:column headerText="Alinhamento">
+                                            <h:outputText value="#{lh.alinhamento}" />
+                                        </p:column>
+                                        <p:column headerText="Inteligencia">
+                                            <h:outputText value="#{lh.inteligencia}" />
+                                        </p:column>
+                                        <p:column headerText="Poder">
+                                            <h:outputText value="#{lh.poder}" />
+                                        </p:column>
+                                        <p:column headerText="Força">
+                                            <h:outputText value="#{lh.forca}" />
+                                        </p:column>
+                                        <p:column headerText="Destreza">
+                                            <h:outputText value="#{lh.destreza}" />
+                                        </p:column>
+                                        <p:column headerText="Combate">
+                                            <h:outputText value="#{lh.combate}" />
+                                        </p:column>
+                                        <p:column headerText="Defesa">
+                                            <h:outputText value="#{lh.defesa}" />
+                                        </p:column>
+                                    </p:dataTable>
+                                    <span>Habilidade que será usada em batalha: <span style="font-weight: bold">#{partidaMB.atributo}</span></span>
+                                    <p/>
+                                    <p:panel>
+                                        <div class="row">
+                                            <h:commandButton styleClass="btn btn-sm" value="Iniciar Batalha"  action="#{partidaMB.iniciarPartida()}"/>                                        
+                                            <h:commandButton styleClass="ml-15 btn btn-sm" value="Limpar"  actionListener="#{partidaMB.removerLista()}"/>
+                                        </div>
+                                    </p:panel>
+                                </div>
+                            </h:panelGroup>
                         </div>
+                        <div class="row justify-content-center">
+                            <h:panelGroup id="visualizacao" rendered="#{not empty partidaMB.listaDuelo}">
+                                <div class="container-fluid">
+                                    <p/>
+                                    <p:messages id="msg" showDetail="true" />
+                                </div><br/>
+                            </h:panelGroup>
+                        </div>
+                        <br/>
                     </div>
                 </div>
             </div>
-        </div>
+        </h:form>
 
         <!-- ##### Javascript ##### -->
         <!-- jQuery-2.2.4 js -->
-        <script src="resources/js/jquery/jquery-2.2.4.min.js"></script>
+        <!--<script src="resources/js/jquery/jquery-2.2.4.min.js"></script>-->
         <!-- Popper js -->
         <script src="resources/js/bootstrap/popper.min.js"></script>
         <!-- Bootstrap js -->

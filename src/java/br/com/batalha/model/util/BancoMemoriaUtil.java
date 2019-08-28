@@ -1,7 +1,6 @@
 package br.com.batalha.model.util;
 
 import br.com.batalha.exception.HeroisException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import br.com.batalha.model.dto.HeroiDto;
@@ -22,26 +21,44 @@ public class BancoMemoriaUtil {
     }
 
     public List<HeroiDto> carregarHerois() throws HeroisException {
-        if (heroiDtos == null) {
-            heroiDtos = new ArrayList<>();
-            heroiDtos.add(p1);
-            heroiDtos.add(p2);
-            heroiDtos.add(p3);
-            heroiDtos.add(p4);
-            heroiDtos.add(p5);
+        try {
+            if (heroiDtos == null) {
+                heroiDtos = new ArrayList<>();
+                heroiDtos.add(p1);
+                heroiDtos.add(p2);
+                heroiDtos.add(p3);
+                heroiDtos.add(p4);
+                heroiDtos.add(p5);
+            }
+            return heroiDtos;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HeroisException("carregarHerois falhou");
         }
-        return heroiDtos;
+    }
+
+    public void gravarHeroi(HeroiDto h) throws HeroisException {
+        try {
+            heroiDtos.add(h);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HeroisException("gravarHeroi falhou");
+        }
     }
 
     public List<String> carregarAtributos() throws HeroisException {
-        atributos = new ArrayList<>();
-        atributos.add("inteligencia");
-        atributos.add("forca");
-        atributos.add("destreza");
-        atributos.add("defesa");
-        atributos.add("poder");
-        atributos.add("combate");
-        return atributos;
+        try {
+            atributos = new ArrayList<>();
+            atributos.add("inteligencia");
+            atributos.add("forca");
+            atributos.add("destreza");
+            atributos.add("defesa");
+            atributos.add("poder");
+            atributos.add("combate");
+            return atributos;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new HeroisException("carregarAtributos falhou");
+        }
     }
-
 }

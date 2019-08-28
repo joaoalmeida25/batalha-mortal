@@ -33,9 +33,8 @@ public class IndexMB implements Serializable {
             setListaHerois(hc.carregarHerois());
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Lista carregada!", "");
             FacesContext.getCurrentInstance().addMessage(null, msg);
-        } catch (HeroisException e) {
-            System.out.println("Erro: " + e.getMessage());
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao carregar lista...", "");
+        } catch (HeroisException ex) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, ex.getMessage(), "");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
