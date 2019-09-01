@@ -1,9 +1,15 @@
-package br.com.batalha.model.dto;
+package br.com.batalha.model;
 
 import java.io.Serializable;
 
-public class HeroiDto implements Serializable{
-    
+/**
+ * Classe que irá carregar todos os personagens
+ *
+ * @author paulo
+ *
+ */
+public class PersonagemModel implements Serializable {
+
     private static final long serialVersionUID = 1L;
     
     private String nome;
@@ -14,22 +20,8 @@ public class HeroiDto implements Serializable{
     private Integer poder;
     private Integer combate;
     private Integer defesa;
-    
-    public HeroiDto(){
-        
-    }
 
-    public HeroiDto(String nome, String alinhamento, Integer inteligencia, Integer forca, Integer destreza,
-            Integer poder, Integer combate, Integer defesa) {
-        this.nome = nome;
-        this.alinhamento = alinhamento;
-        this.inteligencia = inteligencia;
-        this.forca = forca;
-        this.destreza = destreza;
-        this.poder = poder;
-        this.combate = combate;
-        this.defesa = defesa;
-    }
+    private Integer numeroVitorias = 0;
 
     public Integer getDefesa() {
         return defesa;
@@ -93,6 +85,20 @@ public class HeroiDto implements Serializable{
 
     public void setCombate(Integer combate) {
         this.combate = combate;
+    }
+
+    /**
+     * @return the numeroVitorias
+     */
+    public Integer getNumeroVitorias() {
+        return numeroVitorias;
+    }
+
+    /**
+     * @param numeroVitorias the numeroVitorias to set
+     */
+    public void setNumeroVitorias(Integer numeroVitorias) {
+        this.numeroVitorias = numeroVitorias;
     }
 
 }

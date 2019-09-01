@@ -11,8 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
         <link rel="stylesheet" href="resources/style.css"/>
-        <link rel="stylesheet" href="resources/map/assets/css/reset.css"/>
-        <link rel="stylesheet" href="resources/map/assets/css/style.css"/>
+        <link rel="stylesheet" href="resources/css/table.css"/>
     </h:head>
     <h:body>
         <header class="header-area">
@@ -22,9 +21,6 @@
                     <div class="row h-100 align-items-center">
                         <div class="col-12 d-flex justify-content-between">
                             <!-- Logo Area -->
-                            <div class="logo">
-                                <a href="#"><img style="width: 60px; padding-top: 12px;" src="resources/images/banco1.png" alt=""/></a>  
-                            </div>
                             <div class="col align-self-end baner">
                                 <h1>Batalha Mortal</h1>
                             </div>
@@ -79,7 +75,7 @@
                 </div>    
             </div>
         </div>
-        
+
         <h:form prependId="false">
             <div class="container mt-15 ">
                 <div class="row">
@@ -90,50 +86,109 @@
                         <div class="row">
                             <h:panelGroup rendered="#{not empty dueloMB.listaDuelo}">
                                 <div class="container-fluid">
-                                    <p:dataTable var="lh" value="#{dueloMB.listaDuelo}">
-                                        <p:column headerText="Nome">
-                                            <h:outputText value="#{lh.nome}" />
-                                        </p:column>
-                                        <p:column headerText="Alinhamento">
-                                            <h:outputText value="#{lh.alinhamento}" />
-                                        </p:column>
-                                        <p:column headerText="Inteligencia">
-                                            <h:outputText value="#{lh.inteligencia}" />
-                                        </p:column>
-                                        <p:column headerText="Poder">
-                                            <h:outputText value="#{lh.poder}" />
-                                        </p:column>
-                                        <p:column headerText="Força">
-                                            <h:outputText value="#{lh.forca}" />
-                                        </p:column>
-                                        <p:column headerText="Destreza">
-                                            <h:outputText value="#{lh.destreza}" />
-                                        </p:column>
-                                        <p:column headerText="Combate">
-                                            <h:outputText value="#{lh.combate}" />
-                                        </p:column>
-                                        <p:column headerText="Defesa">
-                                            <h:outputText value="#{lh.defesa}" />
-                                        </p:column>
-                                    </p:dataTable>
-                                    <span>Habilidade que será usada em batalha: <span style="font-weight: bold">#{dueloMB.atributo}</span></span>
+                                    <div class="row">
+                                        <div align="center" class="col-5">
+                                            <table class="timecard">
+                                                <caption>Herói 1</caption>
+                                                <tbody>
+                                                    <tr class="odd">
+                                                        <th>Nome</th>
+                                                        <td>#{dueloMB.p1.nome}</td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <th>Alinhamento</th>
+                                                        <td>#{dueloMB.p1.alinhamento}</td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        <th>Inteligência</th>
+                                                        <td>#{dueloMB.p1.inteligencia}</td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <th>Poder</th>
+                                                        <td>#{dueloMB.p1.poder}</td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        <th>Força</th>
+                                                        <td>#{dueloMB.p1.forca}</td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <th>Destreza</th>
+                                                        <td>#{dueloMB.p1.destreza}</td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        <th>Combate</th>
+                                                        <td>#{dueloMB.p1.combate}</td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <th>Defesa</th>
+                                                        <td>#{dueloMB.p1.defesa}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div align="center" class="col-2">
+                                            <img class="mt-30" src="resources/images/vs1.png"/>
+                                        </div>
+                                        <div align="center" class="col-5">
+                                            <table class="timecard">
+                                                <caption>Herói 2</caption>
+                                                <tbody>
+                                                    <tr class="odd">
+                                                        <th>Nome</th>
+                                                        <td>#{dueloMB.p2.nome}</td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <th>Alinhamento</th>
+                                                        <td>#{dueloMB.p2.alinhamento}</td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        <th>Inteligência</th>
+                                                        <td>#{dueloMB.p2.inteligencia}</td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <th>Poder</th>
+                                                        <td>#{dueloMB.p2.poder}</td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        <th>Força</th>
+                                                        <td>#{dueloMB.p2.forca}</td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <th>Destreza</th>
+                                                        <td>#{dueloMB.p2.destreza}</td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        <th>Combate</th>
+                                                        <td>#{dueloMB.p2.combate}</td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <th>Defesa</th>
+                                                        <td>#{dueloMB.p2.defesa}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <span>Habilidade que será usada em batalha: <span style="font-weight: bold">#{dueloMB.atributo}</span></span>
+                                    </div>
                                     <p/>
                                     <p:panel>
-                                        <div class="row">
-                                            <h:commandButton styleClass="btn btn-sm" value="Iniciar Batalha"  action="#{dueloMB.batalhar()}"/>                                        
+                                        <div class="row justify-content-center">
+                                            <h:commandButton styleClass="btn btn-sm" value="Iniciar Batalha" actionListener="#{dueloMB.batalhar()}"/>                                        
                                             <h:commandButton styleClass="ml-15 btn btn-sm" value="Limpar"  actionListener="#{dueloMB.removerLista()}"/>
                                         </div>
                                     </p:panel>
                                 </div>
                             </h:panelGroup>
                         </div>
-                        <div class="row justify-content-center">
+                        <div class="row mt-15 justify-content-center">
                             <h:panelGroup id="visualizacao" rendered="#{not empty dueloMB.listaDuelo}">
                                 <div class="container-fluid">
                                     <p:messages id="msg" showDetail="true"/>
-                                </div><br/>
+                                </div>
                             </h:panelGroup>
-                        </div>
+                        </div><br/><br/><br/>
                     </div>
                 </div>
             </div>

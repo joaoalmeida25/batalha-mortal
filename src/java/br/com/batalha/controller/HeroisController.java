@@ -1,10 +1,11 @@
 package br.com.batalha.controller;
 
-import br.com.batalha.exception.HeroisException;
+import br.com.batalha.exception.PersonagemException;
 import java.util.List;
 
-import br.com.batalha.model.dto.HeroiDto;
-import br.com.batalha.model.util.BancoMemoriaUtil;
+import br.com.batalha.model.PersonagemModel;
+import br.com.batalha.util.BancoMemoriaUtil;
+import java.io.IOException;
 
 /**
  * Classe adicionar face
@@ -14,42 +15,42 @@ import br.com.batalha.model.util.BancoMemoriaUtil;
  */
 public class HeroisController {
 
-    public List<HeroiDto> carregarHerois() throws HeroisException {
-        return BancoMemoriaUtil.getInstance().carregarHerois();
+    public List<PersonagemModel> carregarHerois() throws IOException {
+        return BancoMemoriaUtil.getInstance().carregarPersonagens();
     }
 
-    public void salvarHeroi(HeroiDto h) throws HeroisException {
-        BancoMemoriaUtil.getInstance().gravarHeroi(h);
+    public void salvarHeroi(PersonagemModel p) throws PersonagemException {
+        BancoMemoriaUtil.getInstance().gravarPersonagem(p);
     }
 
-    public List<String> carregarAtributos() throws HeroisException {
+    public List<String> carregarAtributos() throws PersonagemException {
         return BancoMemoriaUtil.getInstance().carregarAtributos();
     }
 
-    public Boolean validarHeroi(HeroiDto heroi) throws HeroisException {
-        if (null == heroi.getNome() || "".equals(heroi.getNome())) {
-            throw new HeroisException("Nome é um campo obrigatório! Insira os dados para continuar.");
+    public Boolean validarHeroi(PersonagemModel p) throws PersonagemException {
+        if (null == p.getNome() || "".equals(p.getNome())) {
+            throw new PersonagemException("Nome é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == heroi.getAlinhamento() || "".equals(heroi.getAlinhamento())) {
-            throw new HeroisException("Alinhamento é um campo obrigatório! Insira os dados para continuar.");
+        if (null == p.getAlinhamento() || "".equals(p.getAlinhamento())) {
+            throw new PersonagemException("Alinhamento é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == heroi.getInteligencia() || 0 == heroi.getInteligencia()) {
-            throw new HeroisException("Inteligência é um campo obrigatório! Insira os dados para continuar.");
+        if (null == p.getInteligencia() || 0 == p.getInteligencia()) {
+            throw new PersonagemException("Inteligência é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == heroi.getForca() ||  0 == heroi.getForca()) {
-            throw new HeroisException("Força é um campo obrigatório! Insira os dados para continuar.");
+        if (null == p.getForca() ||  0 == p.getForca()) {
+            throw new PersonagemException("Força é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == heroi.getDestreza() ||  0 == heroi.getDestreza()) {
-            throw new HeroisException("Destreza é um campo obrigatório! Insira os dados para continuar.");
+        if (null == p.getDestreza() ||  0 == p.getDestreza()) {
+            throw new PersonagemException("Destreza é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == heroi.getPoder() ||  0 == heroi.getPoder()) {
-            throw new HeroisException("Poder é um campo obrigatório! Insira os dados para continuar.");
+        if (null == p.getPoder() ||  0 == p.getPoder()) {
+            throw new PersonagemException("Poder é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == heroi.getCombate() ||  0 == heroi.getCombate()) {
-            throw new HeroisException("Combate é um campo obrigatório! Insira os dados para continuar.");
+        if (null == p.getCombate() ||  0 == p.getCombate()) {
+            throw new PersonagemException("Combate é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == heroi.getDefesa() ||  0 == heroi.getDefesa()) {
-            throw new HeroisException("Defesa é um campo obrigatório! Insira os dados para continuar.");
+        if (null == p.getDefesa() ||  0 == p.getDefesa()) {
+            throw new PersonagemException("Defesa é um campo obrigatório! Insira os dados para continuar.");
         }
         return true;
     }

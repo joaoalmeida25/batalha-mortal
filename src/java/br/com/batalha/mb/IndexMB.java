@@ -1,16 +1,12 @@
 package br.com.batalha.mb;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import br.com.batalha.controller.HeroisController;
-import br.com.batalha.exception.HeroisException;
-import br.com.batalha.model.dto.HeroiDto;
+import br.com.batalha.model.PersonagemModel;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -24,17 +20,25 @@ import javax.faces.context.FacesContext;
 @ViewScoped
 public class IndexMB implements Serializable {
 
-    private List<HeroiDto> listaHerois;
-
-    public IndexMB() {
+    private List<PersonagemModel> listaHerois;
+    
+    @PostConstruct
+    public void init() {
+        carregarLista(); // Carrega a lista assim que a página for chamada
+    }
+    
+    public Integer qntdHerois(){
+        return listaHerois.size();
+    }
+    
+    // Método que carrega a lista de hérois
+    public final void carregarLista() {
         listaHerois = new ArrayList<>();
+        HeroisController hc = new HeroisController();
         try {
-            HeroisController hc = new HeroisController();
-            setListaHerois(hc.carregarHerois());
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Lista carregada!", "");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        } catch (HeroisException ex) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, ex.getMessage(), "");
+            listaHerois = hc.carregarHerois();
+        } catch (IOException e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro ao carregar lista", e.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
@@ -42,14 +46,14 @@ public class IndexMB implements Serializable {
     /**
      * @return the listaHerois
      */
-    public List<HeroiDto> getListaHerois() {
+    public List<PersonagemModel> getListaHerois() {
         return listaHerois;
     }
 
     /**
      * @param listaHerois the listaHerois to set
      */
-    public void setListaHerois(List<HeroiDto> listaHerois) {
+    public void setListaHerois(List<PersonagemModel> listaHerois) {
         this.listaHerois = listaHerois;
     }
 

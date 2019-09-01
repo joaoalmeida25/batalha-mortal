@@ -17,5 +17,11 @@
             <file>file:/media/joao/HD/Scorpion/Projetos/Desenvolvimento(Java%20e%20JavaWeb)/BatalhaMortal/web/resources/style.css</file>
             <file>file:/media/joao/HD/Scorpion/Projetos/Desenvolvimento(Java%20e%20JavaWeb)/BatalhaMortal/web/duelo.xhtml</file>
         </group>
+        <group name="Stefanini">
+            <file>file:/media/joao/HD/Scorpion/Projetos/Desenvolvimento(Java%20e%20JavaWeb)/BatalhaMortal/src/java/br/com/batalha/mb/PartidaMB.java</file>
+            <file>file:/media/joao/HD/Scorpion/Projetos/Desenvolvimento(Java%20e%20JavaWeb)/BatalhaMortal/src/java/br/com/batalha/model/PersonagemModel.java</file>
+            <file>file:/media/joao/HD/Scorpion/Projetos/Desenvolvimento(Java%20e%20JavaWeb)/BatalhaMortal/src/java/br/com/batalha/util/PersonagemUtil.java</file>
+            <file>file:/media/joao/HD/Scorpion/Projetos/Desenvolvimento(Java%20e%20JavaWeb)/BatalhaMortal/src/java/br/com/batalha/mb/DueloMB.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -9,9 +9,10 @@ package br.com.batalha.exception;
  *
  * @author joao
  */
-public class HeroisException extends Exception {
-    
-    public HeroisException(String msg){
+public class PersonagemException extends Exception{
+
+    public PersonagemException(String msg) {
         super(msg);
     }
+    
 }
