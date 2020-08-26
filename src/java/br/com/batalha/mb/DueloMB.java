@@ -353,51 +353,34 @@ public class DueloMB implements Serializable {
     // Método que inseri o vencedor do duelo na lista de vencedores
     public void vencedor(PersonagemModel p) {
         p.setNumeroVitorias(p.getNumeroVitorias() + 1); // Incrementa o número de vitorias
-        getListaVencedor().add(p2);
+        listaVencedor.add(p);
     }
 
+//    Getters e Setters
     public List<PersonagemModel> getListaDuelo() {
         return listaDuelo;
     }
 
-    /**
-     * @param listaDuelo the listaDuelo to set
-     */
     public void setListaDuelo(List<PersonagemModel> listaDuelo) {
         this.listaDuelo = listaDuelo;
     }
 
-    /**
-     * @return the p1
-     */
     public PersonagemModel getP1() {
         return p1;
     }
 
-    /**
-     * @return the p2
-     */
     public PersonagemModel getP2() {
         return p2;
     }
 
-    /**
-     * @return the atributo
-     */
     public String getAtributo() {
         return atributo;
     }
 
-    /**
-     * @return the listaVencedor
-     */
     public List<PersonagemModel> getListaVencedor() {
         return listaVencedor;
     }
 
-    /**
-     * @param listaVencedor the listaVencedor to set
-     */
     public void setListaVencedor(List<PersonagemModel> listaVencedor) {
         this.listaVencedor = listaVencedor;
     }

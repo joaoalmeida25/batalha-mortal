@@ -4,65 +4,40 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <link rel="icon" href="resources/images/img07.png" type="image/ico" />
+        <link rel="icon" href="resources/images/mvsdc.png" type="image/ico" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>Batalha Mortal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
         <link rel="stylesheet" href="resources/style.css"/>
-        <link rel="stylesheet" href="resources/css/table.css"/>
+        <link rel="stylesheet" href="resources/css/tabelaDuelo.css"/>
     </h:head>
     <h:body>
-        <header class="header-area">
-            <!-- Top Header Area -->
-            <div class="top-header-area">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12 d-flex justify-content-between">
-                            <!-- Logo Area -->
-                            <div class="col align-self-end baner">
-                                <h1>Batalha Mortal</h1>
-                            </div>
-                            <!-- Top Contact Info -->
-                            <div class="top-contact-info d-flex align-items-center">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Navbar Area -->
-            <div class="credit-main-menu" id="sticker">
-                <div class="classy-nav-container breakpoint-off">
-                    <div class="container">
-                        <!-- Menu -->
-                        <nav class="classy-navbar justify-content-between" id="creditNav">
-                            <!-- Navbar Toggler -->
-                            <div class="classy-navbar-toggler">
-                                <span class="navbarToggler"><span></span><span></span><span></span></span>
-                            </div>
-                            <!-- Menu -->
-                            <div class="classy-menu">
-                                <!-- Close Button -->
-                                <div class="classycloseIcon">
-                                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                                </div>
-                                <!-- Nav Start -->
-                                <div class="classynav">
-                                    <ul>
-                                        <li><a href="#{request.contextPath}">Herois</a></li>
-                                        <li><a href="#">Duelo</a></li>
-                                        <li><a href="partida.xhtml">Partida</a></li>
-                                        <li><a href="novoHeroi.xhtml">Carregar Novo Herói</a></li>
-                                    </ul>
-                                </div>
-                                <!-- Nav End -->
-                            </div>
-                        </nav>
-                    </div>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Batalha Mortal</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="textoNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#{request.contextPath}">Herois</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Duelo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="partida.xhtml">Partida</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="novoHeroi.xhtml">Novo Heroi</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </nav>    
         </header>
 
         <div class="container">
@@ -127,7 +102,7 @@
                                             </table>
                                         </div>
                                         <div align="center" class="col-2">
-                                            <img class="mt-30" src="resources/images/vs1.png"/>
+                                            <img class="mt-50" src="resources/images/vs2.png"/>
                                         </div>
                                         <div align="center" class="col-5">
                                             <table class="timecard">
@@ -173,20 +148,16 @@
                                         <span>Habilidade que será usada em batalha: <span style="font-weight: bold">#{dueloMB.atributo}</span></span>
                                     </div>
                                     <p/>
-                                    <p:panel>
-                                        <div class="row justify-content-center">
-                                            <h:commandButton styleClass="btn btn-sm" value="Iniciar Batalha" actionListener="#{dueloMB.batalhar()}"/>                                        
-                                            <h:commandButton styleClass="ml-15 btn btn-sm" value="Limpar"  actionListener="#{dueloMB.removerLista()}"/>
-                                        </div>
-                                    </p:panel>
+                                    <div class="row justify-content-center">
+                                        <h:commandButton styleClass="btn btn-sm" value="Iniciar Batalha" actionListener="#{dueloMB.batalhar()}"/>                                        
+                                        <h:commandButton styleClass="ml-15 btn btn-sm" value="Limpar"  actionListener="#{dueloMB.removerLista()}"/>
+                                    </div>
                                 </div>
                             </h:panelGroup>
                         </div>
                         <div class="row mt-15 justify-content-center">
                             <h:panelGroup id="visualizacao" rendered="#{not empty dueloMB.listaDuelo}">
-                                <div class="container-fluid">
-                                    <p:messages id="msg" showDetail="true"/>
-                                </div>
+                                <p:messages id="msg" showDetail="true"/>
                             </h:panelGroup>
                         </div><br/><br/><br/>
                     </div>
@@ -195,16 +166,8 @@
         </h:form>
 
         <!-- ##### Javascript ##### -->
-        <!-- jQuery-2.2.4 js -->
-        <!--<script src="resources/js/jquery/jquery-2.2.4.min.js"></script>-->
-        <!-- Popper js -->
-        <script src="resources/js/bootstrap/popper.min.js"></script>
         <!-- Bootstrap js -->
         <script src="resources/js/bootstrap/bootstrap.min.js"></script>
-        <!-- All Plugins js -->
-        <script src="resources/js/plugins/plugins.js"></script>
-        <!-- Active js -->
-        <script src="resources/js/active.js"></script>
     </h:body>
 </html>
 

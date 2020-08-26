@@ -6,13 +6,8 @@ import java.util.List;
 import br.com.batalha.model.PersonagemModel;
 import br.com.batalha.util.BancoMemoriaUtil;
 import java.io.IOException;
+import java.util.Objects;
 
-/**
- * Classe adicionar face
- *
- * @author c1297467
- *
- */
 public class HeroisController {
 
     public List<PersonagemModel> carregarHerois() throws IOException {
@@ -28,28 +23,28 @@ public class HeroisController {
     }
 
     public Boolean validarHeroi(PersonagemModel p) throws PersonagemException {
-        if (null == p.getNome() || "".equals(p.getNome())) {
+        if (Objects.nonNull(p.getNome()) || "".equals(p.getNome())) {
             throw new PersonagemException("Nome é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == p.getAlinhamento() || "".equals(p.getAlinhamento())) {
+        if (Objects.nonNull(p.getAlinhamento()) || "".equals(p.getAlinhamento())) {
             throw new PersonagemException("Alinhamento é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == p.getInteligencia() || 0 == p.getInteligencia()) {
+        if (Objects.nonNull(p.getInteligencia()) || 0 == p.getInteligencia()) {
             throw new PersonagemException("Inteligência é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == p.getForca() ||  0 == p.getForca()) {
+        if (Objects.nonNull(p.getForca()) || 0 == p.getForca()) {
             throw new PersonagemException("Força é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == p.getDestreza() ||  0 == p.getDestreza()) {
+        if (Objects.nonNull(p.getDestreza()) || 0 == p.getDestreza()) {
             throw new PersonagemException("Destreza é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == p.getPoder() ||  0 == p.getPoder()) {
+        if (Objects.nonNull(p.getPoder()) || 0 == p.getPoder()) {
             throw new PersonagemException("Poder é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == p.getCombate() ||  0 == p.getCombate()) {
+        if (Objects.nonNull(p.getCombate()) || 0 == p.getCombate()) {
             throw new PersonagemException("Combate é um campo obrigatório! Insira os dados para continuar.");
         }
-        if (null == p.getDefesa() ||  0 == p.getDefesa()) {
+        if (Objects.nonNull(p.getDefesa()) || 0 == p.getDefesa()) {
             throw new PersonagemException("Defesa é um campo obrigatório! Insira os dados para continuar.");
         }
         return true;

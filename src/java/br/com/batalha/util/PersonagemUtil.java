@@ -14,7 +14,7 @@ import com.opencsv.CSVReaderBuilder;
 public class PersonagemUtil {
 	
 	//Variáveis final
-	final String arquivo = "/media/joao/HD/Scorpion/Projetos/Desenvolvimento(Java e JavaWeb)/BatalhaMortal/src/java/br/com/batalha/controller/charcters_stats.csv";
+	final String arquivo = "/media/joao/HD/Projetos/Java EE/BatalhaMortal/src/java/br/com/batalha/controller/charcters_stats.csv";
 	
 	public PersonagemUtil(){
 		

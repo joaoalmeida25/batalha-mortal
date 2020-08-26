@@ -38,21 +38,15 @@ public class IndexMB implements Serializable {
         try {
             listaHerois = hc.carregarHerois();
         } catch (IOException e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro ao carregar lista", e.getMessage());
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao carregar lista", e.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
-    /**
-     * @return the listaHerois
-     */
     public List<PersonagemModel> getListaHerois() {
         return listaHerois;
     }
-
-    /**
-     * @param listaHerois the listaHerois to set
-     */
+    
     public void setListaHerois(List<PersonagemModel> listaHerois) {
         this.listaHerois = listaHerois;
     }

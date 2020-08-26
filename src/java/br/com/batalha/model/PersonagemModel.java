@@ -87,16 +87,10 @@ public class PersonagemModel implements Serializable {
         this.combate = combate;
     }
 
-    /**
-     * @return the numeroVitorias
-     */
     public Integer getNumeroVitorias() {
         return numeroVitorias;
     }
 
-    /**
-     * @param numeroVitorias the numeroVitorias to set
-     */
     public void setNumeroVitorias(Integer numeroVitorias) {
         this.numeroVitorias = numeroVitorias;
     }

@@ -17,15 +17,15 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @ViewScoped
 public class NovoHeroiMB implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     private PersonagemModel novoHeroi;
-    
+
     @PostConstruct
     public void init() {
         novoHeroi = new PersonagemModel(); // instancia um novo heroi ao carregar a página
     }
-    
+
     // Limpa atributos dos herois
     public void limpar() {
         novoHeroi.setAlinhamento(null);
@@ -37,7 +37,7 @@ public class NovoHeroiMB implements Serializable {
         novoHeroi.setDestreza(null);
         novoHeroi.setPoder(null);
     }
-    
+
     // Método que salva o heroi temporariamente na lista carregada com todos os herois
     public void salvar() {
         HeroisController hc = new HeroisController();
@@ -45,18 +45,18 @@ public class NovoHeroiMB implements Serializable {
             if (hc.validarHeroi(novoHeroi)) {
                 hc.salvarHeroi(novoHeroi);
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Herói inserido!", "");
-                FacesContext.getCurrentInstance().addMessage(null, msg);                
+                FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         } catch (PersonagemException e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao inserir herói", e.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    
+
     public PersonagemModel getNovoHeroi() {
         return novoHeroi;
     }
-    
+
     public void setNovoHeroi(PersonagemModel novoHeroi) {
         this.novoHeroi = novoHeroi;
     }
